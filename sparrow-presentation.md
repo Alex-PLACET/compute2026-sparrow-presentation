@@ -247,7 +247,8 @@ std::vector<sp::record_batch> batches = sp_ipc::deserialize_stream(stream_data);
 ## Exporting to python
 
 ```c++
-PyObject* sparrow_array = sp::pycapsule::create_sparrow_array_object(std::move(my_array));
+sp::rockfinch::SparrowArray sparrow_array(std::move(my_array)); // exposed to Python, e.g. with nanobind
+auto [schema_capsule, array_capsule] = sparrow_array.export_to_capsules(); // __arrow_c_array__
 ```
 
 ```python
@@ -270,7 +271,7 @@ or
 PyObject* schema_capsule = /* ... */;
 PyObject* array_capsule = /* ... */;
 // Import into sparrow array
-sp::array imported_array = sp::pycapsule::import_array_from_capsules(
+sp::array imported_array = sp::rockfinch::import_array_from_capsules(
         schema_capsule, array_capsule);
 ```
 

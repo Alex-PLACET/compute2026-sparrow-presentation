@@ -1,8 +1,6 @@
 # The Sparrow ecosystem: Arrow in modern minimal C++20
 
-## OpenTeams meetup, October 2026
-
-### 2026-10-26
+## Compute!, November 2026
 
 Slides online: https://alex-placet.github.io/compute2026-sparrow-presentation/slides/
 
@@ -13,7 +11,7 @@ First make sure you have Node.js installed.
 Then build the slides with:
 
 ```bash
-npx @marp-team/marp-cli@latest sparrow-presentation.md 
+npx @marp-team/marp-cli@4.5.1 sparrow-presentation.md
 ```
 
 ## Interactive notebooks
