@@ -2,7 +2,7 @@
 marp: true
 lang: en
 paginate: true
-footer: ![height:20px](resources/github.svg) @JohanMabille @QuantStack
+footer: ![height:20px](resources/github.svg) @JohanMabille @Alex-PLACET @QuantStack
 
 style: |
   section.top {
@@ -296,3 +296,4 @@ Idiomatic C++20 implementations of the Apache Arrow memory format + canonical ex
   - sparrow-compute: https://github.com/sparrow-org/sparrow-compute
 - Documentation: https://sparrow-org.github.io/sparrow/index.html
 - Try it online (JupyterLite): https://alex-placet.github.io/compute2026-sparrow-presentation/lab/index.html
+
