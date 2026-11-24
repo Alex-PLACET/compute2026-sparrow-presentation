@@ -1,0 +1,37 @@
+context:
+  version: 0.1.0
+  rockfinch_version: 0.2.2
+
+package:
+  name: rockfinch-demo
+  version: ${{ version }}
+
+source:
+  - path: .
+    target_directory: rockfinch-demo
+  - url: https://github.com/sparrow-org/sparrow-rockfinch/archive/refs/tags/v${{ rockfinch_version }}.tar.gz
+    sha256: bd0a43f03f0f47ae395aae8730f64278fa473fc0de4ad0c4ad8a66914e0426ec
+    target_directory: sparrow-rockfinch
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - ${{ compiler("cxx") }}
+    - cross-python_emscripten-wasm32
+    - cmake
+    - ninja
+    - python
+    - nanobind >=2.9,<2.10.2
+  host:
+    - python
+    - sparrow ==2.6.0
+    - sparrow-compute ==0.1.0
+    - xtensor ==0.27.1
+  run:
+    - python
+
+about:
+  summary: Python extension module in C++ using sparrow, sparrow-compute and sparrow-rockfinch
+  license: Apache-2.0

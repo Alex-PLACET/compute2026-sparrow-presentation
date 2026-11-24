@@ -1,0 +1,9 @@
+{
+  "LiteBuildConfig": {
+    "contents": ["notebooks", "rockfinch-demo/rockfinch_demo.cpp"],
+    "output_dir": "dist"
+  },
+  "XeusAddon": {
+    "environment_file": ["environment-cpp.yml", "environment-python.yml"]
+  }
+}

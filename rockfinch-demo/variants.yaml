@@ -1,0 +1,6 @@
+# Must match the emscripten-forge-4x packages used by the xeus-python kernel
+c_compiler: [emscripten]
+c_compiler_version: [4.0.9]
+cxx_compiler: [emscripten]
+cxx_compiler_version: [4.0.9]
+python: ["3.13.* *_cp313"]

@@ -1,0 +1,12 @@
+name: sparrow-jupyterlite-build
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - jupyter_server
+  - jupyterlite-core >=0.8,<0.9
+  - jupyterlite-xeus >=6,<7
+  - rattler-build >=0.81,<0.82
+  - pip:
+      - jupyterlite-polyglott==0.1.2

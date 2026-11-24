@@ -1,0 +1,12 @@
+name: xeus-cpp-kernel
+channels:
+  # sparrow-compute, built from recipes/sparrow-compute by rattler-build
+  - ./conda-channel
+  - https://prefix.dev/emscripten-forge-4x
+  - https://prefix.dev/conda-forge
+dependencies:
+  - xeus-cpp ==0.10.0
+  - sparrow ==2.6.0
+  - sparrow-ipc ==2.0.0
+  - sparrow-compute ==0.1.0
+  - xtensor ==0.27.1

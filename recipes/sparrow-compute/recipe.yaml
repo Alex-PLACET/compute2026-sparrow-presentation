@@ -1,0 +1,28 @@
+context:
+  version: 0.1.0
+  commit: ce8d0648fc45f32504521f7a512ac7a699dbdd68
+
+package:
+  name: sparrow-compute
+  version: ${{ version }}
+
+source:
+  url: https://github.com/sparrow-org/sparrow-compute/archive/${{ commit }}.tar.gz
+  sha256: d0e97d6d606d56a53b921559ee1d35f922284374cc1518a8404420ce8353c292
+
+build:
+  number: 0
+  noarch: generic
+  # Header-only
+  script: cp -r include/. "$PREFIX/include/"
+
+requirements:
+  run:
+    - sparrow ==2.6.0
+    - xtensor ==0.27.1
+
+about:
+  summary: Lazy xtensor expressions over sparrow arrays (headers, not packaged upstream yet)
+  homepage: https://github.com/sparrow-org/sparrow-compute
+  license: Apache-2.0
+  license_file: LICENSE

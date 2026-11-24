@@ -1,0 +1,53 @@
+name: Deploy JupyterLite
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Install build environment
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: jupyterlite_build_environment.yml
+          cache-environment: true
+
+      - name: Build the sparrow-compute and rockfinch-demo packages
+        shell: bash -l {0}
+        run: rattler-build build --recipe recipes/sparrow-compute --recipe rockfinch-demo --target-platform emscripten-wasm32 -c https://prefix.dev/emscripten-forge-4x -c conda-forge --output-dir conda-channel
+
+      - name: Build the JupyterLite site
+        shell: bash -l {0}
+        run: jupyter lite build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
