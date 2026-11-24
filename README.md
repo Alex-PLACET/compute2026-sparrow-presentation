@@ -4,6 +4,8 @@
 
 ### 2026-10-26
 
+Slides online: https://alex-placet.github.io/compute2026-sparrow-presentation/slides/
+
 ## Build locally
 
 First make sure you have Node.js installed.

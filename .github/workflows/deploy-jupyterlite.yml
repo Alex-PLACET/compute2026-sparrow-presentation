@@ -36,6 +36,11 @@ jobs:
         shell: bash -l {0}
         run: jupyter lite build
 
+      - name: Build the slides
+        run: |
+          npx --yes @marp-team/marp-cli@4.5.1 sparrow-presentation.md -o dist/slides/index.html
+          cp -r resources dist/slides/
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
