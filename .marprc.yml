@@ -1,0 +1,2 @@
+# The demo slides embed the JupyterLite notebooks with <iframe>
+html: true

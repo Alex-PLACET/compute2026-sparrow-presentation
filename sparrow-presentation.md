@@ -19,6 +19,12 @@ style: |
     justify-content: center;
   }
   
+  iframe.demo {
+    width: 100%;
+    height: 520px;
+    border: 1px solid #ccc;
+  }
+
   pre {
     font-size: 24px !important;
     line-height: 1.4 !important;
@@ -206,6 +212,7 @@ Idiomatic C++20 implementations of the Apache Arrow memory format + canonical ex
 ---
 
 # Untyped array
+# [Sparrow demo: arrays](../notebooks/index.html?path=sparrow.ipynb)
 
 ```c++
 sp::array ar(std::move(array), std::move(schema));
@@ -215,6 +222,7 @@ std::cout << "front: "              << ar.front() << std::endl;
 std::cout << "back: "               << ar.back()  << std::endl;
 std::cout << "ar[4].has_value(): "  << ar[4].has_value()  << std::endl;
 ```
+<iframe class="demo" src="../notebooks/index.html?path=sparrow.ipynb" loading="lazy"></iframe>
 
 ---
 
@@ -250,15 +258,18 @@ std::vector<sp::record_batch> batches = sp_ipc::deserialize_stream(stream_data);
 sp::rockfinch::SparrowArray sparrow_array(std::move(my_array)); // exposed to Python, e.g. with nanobind
 auto [schema_capsule, array_capsule] = sparrow_array.export_to_capsules(); // __arrow_c_array__
 ```
+# [Sparrow demo: IPC between C++ and pyarrow](../notebooks/index.html?path=sparrow-ipc.ipynb)
 
 ```python
 from polars._plr import PySeries
 ps = PySeries.from_arrow_c_array(sparrow_array)
 ```
+<iframe class="demo" src="../notebooks/index.html?path=sparrow-ipc.ipynb" loading="lazy"></iframe>
 
 ---
 
 ## Exporting to C++
+# [Sparrow demo: compute](../notebooks/index.html?path=sparrow-compute.ipynb)
 
 ```python
 import pyarrow as pa
@@ -274,6 +285,7 @@ PyObject* array_capsule = /* ... */;
 sp::array imported_array = sp::rockfinch::import_array_from_capsules(
         schema_capsule, array_capsule);
 ```
+<iframe class="demo" src="../notebooks/index.html?path=sparrow-compute.ipynb" loading="lazy"></iframe>
 
 ---
 
@@ -281,11 +293,13 @@ sp::array imported_array = sp::rockfinch::import_array_from_capsules(
 
 ```c++
 #include <sparrow-compute.hpp>
+# [Sparrow demo: rockfinch](../notebooks/index.html?path=rockfinch.ipynb)
 
 sparrow::primitive_array<double> a{1.0, 2.0, 3.0};
 sparrow::primitive_array<double> b{4.0, 5.0, 6.0};
 auto result = sparrow::compute::eval(sparrow::compute::sqrt((a + b) / 2.0));
 ```
+<iframe class="demo" src="../notebooks/index.html?path=rockfinch.ipynb" loading="lazy"></iframe>
 
 ---
 

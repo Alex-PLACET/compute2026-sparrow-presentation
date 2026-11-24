@@ -1,0 +1,10 @@
+{
+  "@jupyter-notebook/application-extension:top": {
+    "visible": "no"
+  },
+  "@jupyterlab/notebook-extension:tracker": {
+    "codeCellConfig": {
+      "lineNumbers": true
+    }
+  }
+}
